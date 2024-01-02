@@ -1,6 +1,7 @@
 package com.kannanrameshrk.rolehierachy.addrole;
 
 import java.util.List;
+import java.util.Queue;
 
 import com.kannanrameshrk.rolehierarchy.dto.Role;
 import com.kannanrameshrk.rolehierarchy.repository.Repository;
@@ -45,5 +46,21 @@ class AddRoleViewModel {
 			return true;
 		}
 		return false;
+	}
+
+	public void validateRemoveRole(Role role) {
+		boolean removeRole=nameValid(role.getRoleName());
+		boolean transferRole=nameValid(role.getReportName());
+		String removeRoleName=role.getRoleName();
+		String transferRoleName=role.getReportName();
+		
+		if(removeRole && transferRole) {
+			boolean remRol=Repository.getInstance().removeSubRole(removeRoleName,transferRoleName);
+			if(remRol) {
+				
+			}else {
+				
+			}
+		}
 	}
 }

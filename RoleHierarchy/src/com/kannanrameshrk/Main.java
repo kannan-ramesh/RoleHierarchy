@@ -10,7 +10,7 @@ public class Main {
 	}
 
 	private void start() {
-		System.out.println("\t\tZOHO Roles");
+		System.out.println("\t\tZOHO ROLES");
 		System.out.println("\t\t***********");
 		AddRoleView addRoleView=new AddRoleView();
 		addRoleView.init();

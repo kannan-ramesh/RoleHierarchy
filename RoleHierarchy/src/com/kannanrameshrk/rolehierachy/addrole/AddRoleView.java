@@ -1,7 +1,5 @@
 package com.kannanrameshrk.rolehierachy.addrole;
 
-import java.awt.List;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.kannanrameshrk.rolehierarchy.dto.Role;
@@ -15,6 +13,7 @@ public class AddRoleView {
 
 	public void init() {
 		boolean loop=true;
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		while(loop) {
 			System.out.println(" 1.AddRootRole\n 2.AddSubRole\n 3.View Role\n 4.Exit");
@@ -73,13 +72,20 @@ public class AddRoleView {
 						System.out.println("\t\tDisplay Role");
 						System.out.println("\t\t------------");
 						java.util.List<Role> list=addRoleViewModel.getRole();
-						for(int i=0;i<list.size();i++) {
-							System.out.println(list.get(i).getRoleName());
+						 
+						for(Role role:list) {
+							System.out.println(role.getRoleName());
 						}
 						break;
 					}case 3:{
 						System.out.println("\t\t Delete Role ");
 						System.out.println("\t\t------------");
+						System.out.println("Enter the role to be deleted:");
+						String removeRole=input.nextLine();
+						System.out.println("Enter the role to be transferred:");
+						String transferRole=input.nextLine();
+						Role role=new Role(removeRole,transferRole);
+						addRoleViewModel.validateRemoveRole(role);
 						break;
 					}case 4:{
 						System.out.println("\t\t Add User");
@@ -128,8 +134,9 @@ public class AddRoleView {
 				System.out.println("View Roles");
 				System.out.println("------------");
 				java.util.List<Role> list=addRoleViewModel.getRole();
-				for(int i=0;i<list.size();i++) {
-					System.out.println(list.get(i).getRoleName());
+
+				for(Role role:list) {
+					System.out.println(role.getRoleName());
 				}
 				break;
 			}case 4:{
